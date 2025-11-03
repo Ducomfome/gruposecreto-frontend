@@ -79,11 +79,11 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', ''); // <-- TROQUE PELO SEU PIXEL ID
+        fbq('init', 'SEU_PIXEL_ID'); // <-- TROQUE PELO SEU PIXEL ID
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=&ev=PageView&noscript=1" /></noscript>
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
     </head>
 <body>
     <div class="container-center bg-[#0a0a0a]" style="height: 100vh;">
@@ -355,9 +355,9 @@
         document.addEventListener('DOMContentLoaded', async () => {
             // =========================================================================================
             //  IMPORTANTE: COLOQUE A URL DO SEU BACKEND (DA RENDER.COM) AQUI QUANDO FOR SUBIR
-            //  Para testes locais, deixe como está ('')
+            //  Para testes locais, use 'http://localhost:3000'
             // =========================================================================================
-            const backendUrl = 'https://gruposecreto-backend.onrender.com/'; // Ex: 'https://meu-funil-backend.onrender.com'
+            const backendUrl = 'http://localhost:3000'; // Ex: 'https://meu-funil-backend.onrender.com'
             // =========================================================================================
 
             const cidade = await obterLocalizacaoComDDD();
@@ -385,7 +385,7 @@
                         const data = await response.json();
                         
                         const paymentId = data.paymentId;
-                        const linkDeDestino = "https://www.quizzer.digital/preview/typebot-DtGZxt";
+                        const linkDeDestino = "https://t.me/+RbrOAC6sEKdiZTQ5";
 
                         const paymentDiv = document.getElementById('payment-qr');
                         paymentDiv.innerHTML = `
