@@ -3,21 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <script
-      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-      data-utmify-prevent-xcod-sck
-      data-utmify-prevent-subids
-    ></script>
-
-    <script>
-      window.pixelId = "6910e816b47bb8af30165e59";
-      var a = document.createElement("script");
-      a.setAttribute("async", "");
-      a.setAttribute("defer", "");
-      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-      document.head.appendChild(a);
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>🔥CLUBE SECRETO - WhatsApp Oficial</title>
@@ -40,6 +25,7 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=792797553335143&ev=PageView&noscript=1" /></noscript>
     <style>
+        /* [SEU CSS TODO AQUI - NÃO MUDA NADA] */
         body, html {
             margin: 0; padding: 0; height: 100%; overflow: hidden;
             touch-action: manipulation; background-color: #0a0a0a;
@@ -302,6 +288,7 @@
             const button = document.getElementById('copy-pix-btn');
             button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg> Copiado!`;
             
+            // Scripts da Exib.io
             const goal3 = "SEU_GOAL_ID_AQUI";
             const goal4 = "SEU_GOAL_ID_AQUI";
             const exoPixel3 = document.createElement('script');
@@ -413,11 +400,17 @@
                     const fbp = getCookie('_fbp');
                     const fbc = getCookie('_fbc');
 
-                    // O AddToCart FOI REMOVIDO DAQUI
-                    // O script pixel.js da Utmify vai cuidar disso
+                    // 2. DISPARAR O AddToCart (BROWSER)
+                    // Adicionamos de volta, já que a Utmify foi removida
+                    if (typeof fbq === 'function') {
+                        fbq('track', 'AddToCart', {
+                            currency: "BRL",
+                            value: 19.99
+                        });
+                    }
                     
 try {
-    // 2. ENVIAR OS COOKIES PARA O BACKEND
+    // 3. ENVIAR OS COOKIES PARA O BACKEND
     const response = await fetch(`${backendUrl}/gerar-pix`, { 
         method: 'POST',
         headers: {
@@ -468,7 +461,7 @@ try {
                 document.getElementById('payment-success').classList.remove('hidden');
 
                 // O 'Purchase' FOI REMOVIDO DAQUI
-                // O backend vai cuidar disso 100%
+                // O backend (server.js) vai cuidar disso 100%
                 
                 document.getElementById('access-button').href = linkDeDestino;
             }
