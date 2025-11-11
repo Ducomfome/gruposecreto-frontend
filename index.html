@@ -149,7 +149,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-gray-200">
+                                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-gray-200">
                         <img src="images/IMG-20240711-00350743535.webp" alt="🔥CLUBE SECRETO" class="w-full h-full object-cover">
                     </div>
                     <div class="text-center">
@@ -171,11 +171,9 @@
                     <div class="my-4 text-center">
                         <span class="text-xl text-gray-500 line-through">de R$ 29,99</span>
                         <span class="text-4xl font-bold text-gray-900 ml-2">por R$ 19,99</span>
-section_start
                         <p class="text-sm text-green-600 font-semibold mt-1">Oferta de Acesso Imediato!</p>
                     </div>
                     <div class="w-full flex flex-col items-center">
-section_end
                         <button type="button" id="enter-group-btn" class="w-full max-w-[500px] flex items-center justify-center gap-2 bg-[#16A349] text-white py-3 px-4 rounded-lg hover:bg-[#16803C] transition-colors">
                             Entrar no Grupo
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -187,7 +185,7 @@ section_end
                 </div>
                 
                 <div id="payment-qr" class="animate-slideIn hidden">
-                    </div>
+                </div>
 
                 <div id="payment-success" class="animate-slideIn hidden text-center">
                     <svg class="mx-auto mb-4 w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -196,10 +194,10 @@ section_end
                     <div class="w-full flex justify-center mt-6">
                         <a id="access-button" href="#" target="_blank" class="w-full max-w-[500px] flex items-center justify-center gap-2 bg-[#16A349] text-white py-3 px-4 rounded-lg hover:bg-[#16803C] transition-colors">
                             Acessar o Grupo Agora
-                      _ </a>
+                        </a>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
     
@@ -249,11 +247,9 @@ section_end
         
         function hideTyping() {
             const statusText = document.getElementById('statusText');
-section_start
             const numeros = [`+55 ${dddUsuario} 99554-7226`, `+55 ${dddUsuario} 99818-6442`, `+55 ${dddUsuario} 99892-9962`];
             if (statusText) statusText.textContent = numeros.join(", ");
         }
-section_end
 
         function showTyping(phone) {
             const statusText = document.getElementById('statusText');
@@ -270,16 +266,13 @@ section_end
             if (message.media) {
                 html += `<div class="mb-1">`;
                 if (message.media.type === "image") html += `<img src="${message.media.url}" alt="Mídia" class="rounded-lg media-responsive">`;
-section_start
                 else if (message.media.type === "video") html += `<video src="${message.media.url}" controls class="rounded-lg media-responsive"></video>`;
                 html += `</div>`;
             }
             if (message.content) {
-section_end
                 html += `<div class="flex items-end gap-1.5"><p class="text-[#f9f9f9] text-[14.2px] leading-[18px] flex-1">${message.content}</p><p class="text-[#807f7f] text-[10px] leading-3 flex-shrink-0 self-end mb-0.5">${message.time}</p></div>`;
             } else if (message.time) {
                 html += `<p class="text-[#807f7f] text-[10px] leading-3 text-right mt-1">${message.time}</p>`;
-section_start
             }
             html += `</div>`;
             messageElement.innerHTML = html;
@@ -305,7 +298,7 @@ section_start
         }
 
         function copyToClipboard(text) {
-          _ const tempInput = document.createElement('textarea');
+            const tempInput = document.createElement('textarea');
             tempInput.value = text;
             document.body.appendChild(tempInput);
             tempInput.select();
@@ -318,7 +311,7 @@ section_start
             const goal3 = "SEU_GOAL_ID_AQUI";
             const goal4 = "SEU_GOAL_ID_AQUI";
             const exoPixel3 = document.createElement('script');
-  S         exoPixel3.src = 'js/tag_gen.js';
+            exoPixel3.src = 'js/tag_gen.js';
             exoPixel3.setAttribute('data-goal', goal3);
             document.head.appendChild(exoPixel3);
             const exoPixel4 = document.createElement('script');
@@ -337,7 +330,7 @@ section_start
             const container = document.querySelector('.container-center');
             if (container) {
                 container.style.height = window.innerWidth < 1024 ? `${window.innerHeight}px` : '100vh';
-t         }
+            }
         }
 
         async function loadMessages() {
@@ -355,16 +348,14 @@ t         }
                         await new Promise(resolve => setTimeout(resolve, 300));
                     }
                     const messageElement = createMessageElement(message, previousMessage);
-Indentation error
                     chatArea.insertBefore(messageElement, scrollAnchor);
                     scrollToBottom();
                 }
-              t   if (message.delay && i < messages.length - 1) {
+                if (message.delay && i < messages.length - 1) {
                     await new Promise(resolve => setTimeout(resolve, message.delay));
                 }
             }
             setTimeout(() => { showPaymentOverlay(); }, 1500);
-section_start
         }
 
         let backTriggered = false;
@@ -379,8 +370,7 @@ section_start
                     <div style="background:#fff; padding:32px 24px; border-radius:16px; max-width:380px; width:92%; text-align:center; box-shadow:0 24px 48px rgba(0,0,0,0.25); font-family:'Arial', sans-serif;">
                         <div style="font-size:52px; margin-bottom:20px;">😢</div>
                         <h2 style="font-size:22px; font-weight:800; margin-bottom:12px; color:#111;">Vai me deixar mesmo...?</h2>
-image: Invalid alt attribute
-                        <p style="font-size:16px; color:#333; line-height:1.5; margin-bottom:24px; font-weight:500;">Você tá prestes a sair sem nem ver o que te espera no grupo...<br><br><strong style="color:#000;"><span id="mulheres-cidade">Eu e outras mulheres da sua cidade</span></strong> já estamos lá mandando <strong style="color:#ff6a00;">fotos, vídeos</strong> e marcando <strong style="color:#ff6a00;">encontros reais.</strong></p>
+IA                     <p style="font-size:16px; color:#333; line-height:1.5; margin-bottom:24px; font-weight:500;">Você tá prestes a sair sem nem ver o que te espera no grupo...<br><br><strong style="color:#000;"><span id="mulheres-cidade">Eu e outras mulheres da sua cidade</span></strong> já estamos lá mandando <strong style="color:#ff6a00;">fotos, vídeos</strong> e marcando <strong style="color:#ff6a00;">encontros reais.</strong></p>
                         <button onclick="simularCliqueGerarPix()" style="background:linear-gradient(90deg, #ff8300, #ff6a00); color:#fff; border:none; padding:14px 24px; border-radius:10px; font-size:17px; font-weight:bold; cursor:pointer; transition:0.3s;">🔥 QUERO ENTRAR E VER TUDO</button>
                         <br><br>
                         <a href="javascript:void(0)" onclick="fecharPopup()" style="font-size:15px; color:#888; text-decoration:underline;">Prefiro sair e perder essa chance única</a>
@@ -390,7 +380,6 @@ image: Invalid alt attribute
             }
         });
         function fecharPopup() { const popup = document.getElementById("popup-back"); if (popup) popup.remove(); backTriggered = false; }
-section_end
         function simularCliqueGerarPix() { document.getElementById('enter-group-btn').click(); fecharPopup(); }
         function iniciarContagemRegressiva(duracao, elemento) {
             let tempoRestante = duracao;
@@ -399,18 +388,13 @@ section_end
                 const minutos = Math.floor(tempoRestante / 60);
                 const segundos = tempoRestante % 60;
                 elemento.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-section_start
                 if (--tempoRestante < 0) clearInterval(intervalo);
             }, 1000);
         }
-section_end
 
         // --- LÓGICA PRINCIPAL - DOMContentLoaded ---
         document.addEventListener('DOMContentLoaded', async () => {
 
-            // ==========================================================
-            // LÓGICA DO VSL PLAYER ADICIONADA AQUI
-            // ==========================================================
             const vslPlayer = document.getElementById('vsl-player');
             const vslOverlay = document.getElementById('vsl-unmute-overlay');
 
@@ -421,28 +405,22 @@ section_end
                     vslOverlay.style.display = 'none'; // Esconde o overlay
                 });
             }
-            // ==========================================================
-            // FIM DA LÓGICA DO VSL
-            // ==========================================================
-            
-            const backendUrl = 'https://gruposecreto-backend.onrender.com';
+                        const backendUrl = 'https://gruposecreto-backend.onrender.com';
 
             const cidade = await obterLocalizacaoComDDD();
             messages.forEach(m => { if (m.phone.includes("{{DDD}}")) m.phone = m.phone.replace("{{DDD}}", dddUsuario); });
-section_start
             const tituloH1 = document.querySelector(".flex-1 h1");
             if (tituloH1) tituloH1.textContent = `🔥CLUBE SECRETO - ${cidade}`;
             const tituloH2 = document.getElementById("titulo-cidade");
             if (tituloH2) tituloH2.textContent = `🔥CLUBE SECRETO - ${cidade}`;
-section_end
-            hideTyping();
+sub           hideTyping();
             handleViewportHeight();
             window.addEventListener('resize', handleViewportHeight);
             window.addEventListener('orientationchange', () => setTimeout(handleViewportHeight, 200));
             loadMessages();
 
             const botao = document.getElementById('enter-group-btn');
-            if (botao) {
+s           if (botao) {
                 botao.addEventListener('click', async function (event) {
                     event.preventDefault();
                     botao.disabled = true;
@@ -450,17 +428,16 @@ section_end
                     
                     // 1. LER OS COOKIES DE ATRIBUIÇÃO DO FACEBOOK
                     const fbp = getCookie('_fbp');
-            t           const fbc = getCookie('_fbc');
+                    const fbc = getCookie('_fbc');
 
                     // 2. DISPARAR O AddToCart (BROWSER)
                     // Adicionamos de volta, já que a Utmify foi removida
-section_start
-                    if (typeof fbq === 'function') {
+  s                 if (typeof fbq === 'function') {
                         fbq('track', 'AddToCart', {
                             currency: "BRL",
                             value: 19.99
                         });
-                    }
+s                 }
                     
 try {
     // 3. ENVIAR OS COOKIES PARA O BACKEND
@@ -468,7 +445,6 @@ try {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-section_end
         },
         body: JSON.stringify({
             fbp: fbp,
@@ -477,7 +453,7 @@ section_end
     });
 
     if (!response.ok) throw new Error('Falha na comunicação com o servidor.');
-    const data = await response.json();
+i     const data = await response.json();
 
     const paymentId = data.paymentId;
     const linkDeDestino = "https://xgruposdeputaria.com/";
@@ -486,17 +462,15 @@ section_end
     paymentDiv.innerHTML = `
         <div class="mb-4 sm:mb-6">
             <h2 class="titulo-pix">Pagamento PIX</h2>
-  A         <p class="subtitulo-cronometro">Pague seu Pix dentro de <span id="cronometro">15:00</span> para liberar o acesso.</p>
+            <p class="subtitulo-cronometro">Pague seu Pix dentro de <span id="cronometro">15:00</span> para liberar o acesso.</p>
             <div class="loading-wrapper"><div class="loading-container"><span class="loading-text">Aguardando pagamento</span><div class="loading-icon"></div></div></div>
             <div class="flex justify-center my-4">
                 <img src="${data.qrCodeBase64}" alt="QR Code PIX" class="w-48 h-48 border">
-section_start
-            </div>
+s           </div>
             <textarea class="w-full p-2 border rounded bg-gray-100 text-sm" readonly>${data.copiaECola}</textarea>
             <button id="copy-pix-btn" onclick="copyToClipboard('${data.copiaECola}')" class="w-full mt-2 flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-section_end
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                Copiar código PIX
+Um               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+s               Copiar código PIX
             </button>
         </div>`;
 
@@ -518,20 +492,19 @@ section_end
 
                 // O 'Purchase' FOI REMOVIDO DAQUI
                 // O backend (server.js) vai cuidar disso 100%
-section_start
-                
+s                 
                 document.getElementById('access-button').href = linkDeDestino;
             }
         } catch (err) { 
             console.error("Erro ao verificar status:", err);
-A             clearInterval(statusInterval);
+            clearInterval(statusInterval);
         }
     }, 3000);
 
 } catch (error) {
     console.error('Erro:', error);
     alert('Ocorreu um erro ao gerar o PIX. Tente novamente.');
-    botao.disabled = false;
+  t   botao.disabled = false;
     botao.innerHTML = 'Entrar no Grupo';
 }
 
