@@ -393,6 +393,22 @@
 
         // --- LÓGICA PRINCIPAL - DOMContentLoaded ---
         document.addEventListener('DOMContentLoaded', async () => {
+            // ==========================================================
+            // LÓGICA DO VSL PLAYER ADICIONADA AQUI
+            // ==========================================================
+            const vslPlayer = document.getElementById('vsl-player');
+            const vslOverlay = document.getElementById('vsl-unmute-overlay');
+
+            if (vslPlayer && vslOverlay) {
+                vslOverlay.addEventListener('click', () => {
+                    vslPlayer.muted = false;
+                    vslPlayer.play();
+                    vslOverlay.style.display = 'none'; // Esconde o overlay
+                });
+            }
+            // ==========================================================
+            // FIM DA LÓGICA DO VSL
+            // ==========================================================
             const backendUrl = 'https://gruposecreto-backend.onrender.com';
 
             const cidade = await obterLocalizacaoComDDD();
