@@ -393,14 +393,15 @@
 
         // --- LÓGICA PRINCIPAL - DOMContentLoaded ---
         document.addEventListener('DOMContentLoaded', async () => {
-            // ==========================================================
-            // LÓGICA DO VSL PLAYER ADICIONADA AQUI
+// ==========================================================
+            // LÓGICA DO VSL PLAYER (VERSÃO CORRIGIDA)
             // ==========================================================
             const vslPlayer = document.getElementById('vsl-player');
             const vslOverlay = document.getElementById('vsl-unmute-overlay');
 
             if (vslPlayer && vslOverlay) {
                 vslOverlay.addEventListener('click', () => {
+                    vslPlayer.currentTime = 0; // <-- AQUI A MÁGICA
                     vslPlayer.muted = false;
                     vslPlayer.play();
                     vslOverlay.style.display = 'none'; // Esconde o overlay
