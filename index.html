@@ -165,7 +165,7 @@
                             <div class="w-8 h-8 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center">
                                 <span class="text-xs font-medium text-gray-600">+752</span>
                             </div>
-                        </div>
+            D         </div>
                     </div>
 
                     <div class="my-4 text-center">
@@ -363,6 +363,7 @@
         window.addEventListener('popstate', function () {
             if (!backTriggered) {
                 backTriggered = true;
+section_start
                 const popup = document.createElement("div");
                 popup.id = "popup-back";
                 popup.style.cssText = "position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:99999;";
@@ -370,8 +371,8 @@
                     <div style="background:#fff; padding:32px 24px; border-radius:16px; max-width:380px; width:92%; text-align:center; box-shadow:0 24px 48px rgba(0,0,0,0.25); font-family:'Arial', sans-serif;">
                         <div style="font-size:52px; margin-bottom:20px;">😢</div>
                         <h2 style="font-size:22px; font-weight:800; margin-bottom:12px; color:#111;">Vai me deixar mesmo...?</h2>
-IA                     <p style="font-size:16px; color:#333; line-height:1.5; margin-bottom:24px; font-weight:500;">Você tá prestes a sair sem nem ver o que te espera no grupo...<br><br><strong style="color:#000;"><span id="mulheres-cidade">Eu e outras mulheres da sua cidade</span></strong> já estamos lá mandando <strong style="color:#ff6a00;">fotos, vídeos</strong> e marcando <strong style="color:#ff6a00;">encontros reais.</strong></p>
-                        <button onclick="simularCliqueGerarPix()" style="background:linear-gradient(90deg, #ff8300, #ff6a00); color:#fff; border:none; padding:14px 24px; border-radius:10px; font-size:17px; font-weight:bold; cursor:pointer; transition:0.3s;">🔥 QUERO ENTRAR E VER TUDO</button>
+                        <p style="font-size:16px; color:#333; line-height:1.5; margin-bottom:24px; font-weight:500;">Você tá prestes a sair sem nem ver o que te espera no grupo...<br><br><strong style="color:#000;"><span id="mulheres-cidade">Eu e outras mulheres da sua cidade</span></strong> já estamos lá mandando <strong style="color:#ff6a00;">fotos, vídeos</strong> e marcando <strong style="color:#ff6a00;">encontros reais.</strong></p>
+        _           <button onclick="simularCliqueGerarPix()" style="background:linear-gradient(90deg, #ff8300, #ff6a00); color:#fff; border:none; padding:14px 24px; border-radius:10px; font-size:17px; font-weight:bold; cursor:pointer; transition:0.3s;">🔥 QUERO ENTRAR E VER TUDO</button>
                         <br><br>
                         <a href="javascript:void(0)" onclick="fecharPopup()" style="font-size:15px; color:#888; text-decoration:underline;">Prefiro sair e perder essa chance única</a>
                     </div>`;
@@ -380,6 +381,7 @@ IA                     <p style="font-size:16px; color:#333; line-heig
             }
         });
         function fecharPopup() { const popup = document.getElementById("popup-back"); if (popup) popup.remove(); backTriggered = false; }
+section_end
         function simularCliqueGerarPix() { document.getElementById('enter-group-btn').click(); fecharPopup(); }
         function iniciarContagemRegressiva(duracao, elemento) {
             let tempoRestante = duracao;
@@ -395,6 +397,9 @@ IA                     <p style="font-size:16px; color:#333; line-heig
         // --- LÓGICA PRINCIPAL - DOMContentLoaded ---
         document.addEventListener('DOMContentLoaded', async () => {
 
+            // ==========================================================
+            // LÓGICA DO VSL PLAYER ADICIONADA AQUI
+            // ==========================================================
             const vslPlayer = document.getElementById('vsl-player');
             const vslOverlay = document.getElementById('vsl-unmute-overlay');
 
@@ -405,39 +410,49 @@ IA                     <p style="font-size:16px; color:#333; line-heig
                     vslOverlay.style.display = 'none'; // Esconde o overlay
                 });
             }
-                        const backendUrl = 'https://gruposecreto-backend.onrender.com';
+            // ==========================================================
+            // FIM DA LÓGICA DO VSL
+            // ==========================================================
+            
+            const backendUrl = 'https://gruposecreto-backend.onrender.com';
 
             const cidade = await obterLocalizacaoComDDD();
             messages.forEach(m => { if (m.phone.includes("{{DDD}}")) m.phone = m.phone.replace("{{DDD}}", dddUsuario); });
             const tituloH1 = document.querySelector(".flex-1 h1");
             if (tituloH1) tituloH1.textContent = `🔥CLUBE SECRETO - ${cidade}`;
+section_start
             const tituloH2 = document.getElementById("titulo-cidade");
             if (tituloH2) tituloH2.textContent = `🔥CLUBE SECRETO - ${cidade}`;
-sub           hideTyping();
+section_end
+            hideTyping();
             handleViewportHeight();
             window.addEventListener('resize', handleViewportHeight);
             window.addEventListener('orientationchange', () => setTimeout(handleViewportHeight, 200));
             loadMessages();
 
             const botao = document.getElementById('enter-group-btn');
-s           if (botao) {
+section_start
+            if (botao) {
                 botao.addEventListener('click', async function (event) {
                     event.preventDefault();
                     botao.disabled = true;
+section_end
                     botao.innerHTML = 'Gerando PIX...';
                     
                     // 1. LER OS COOKIES DE ATRIBUIÇÃO DO FACEBOOK
                     const fbp = getCookie('_fbp');
+section_start
                     const fbc = getCookie('_fbc');
 
                     // 2. DISPARAR O AddToCart (BROWSER)
+JSON error
                     // Adicionamos de volta, já que a Utmify foi removida
-  s                 if (typeof fbq === 'function') {
+                    if (typeof fbq === 'function') {
                         fbq('track', 'AddToCart', {
                             currency: "BRL",
                             value: 19.99
                         });
-s                 }
+                    }
                     
 try {
     // 3. ENVIAR OS COOKIES PARA O BACKEND
@@ -445,6 +460,7 @@ try {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
+section_end
         },
         body: JSON.stringify({
             fbp: fbp,
@@ -453,7 +469,8 @@ try {
     });
 
     if (!response.ok) throw new Error('Falha na comunicação com o servidor.');
-i     const data = await response.json();
+section_start
+nbsp     const data = await response.json();
 
     const paymentId = data.paymentId;
     const linkDeDestino = "https://xgruposdeputaria.com/";
@@ -466,11 +483,13 @@ i     const data = await response.json();
             <div class="loading-wrapper"><div class="loading-container"><span class="loading-text">Aguardando pagamento</span><div class="loading-icon"></div></div></div>
             <div class="flex justify-center my-4">
                 <img src="${data.qrCodeBase64}" alt="QR Code PIX" class="w-48 h-48 border">
-s           </div>
+            </div>
             <textarea class="w-full p-2 border rounded bg-gray-100 text-sm" readonly>${data.copiaECola}</textarea>
+section_end
             <button id="copy-pix-btn" onclick="copyToClipboard('${data.copiaECola}')" class="w-full mt-2 flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-Um               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-s               Copiar código PIX
+section_start
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+nbsp               Copiar código PIX
             </button>
         </div>`;
 
@@ -478,21 +497,23 @@ s               Copiar código PIX
     if (cronometroSpan) iniciarContagemRegressiva(15 * 60, cronometroSpan);
 
     showPaymentQR();
+section_end
 
     const statusInterval = setInterval(async () => {
         try {
             const statusResponse = await fetch(`${backendUrl}/check-status/${paymentId}`);
+section_start
             const statusData = await statusResponse.json();
 
             if (statusData.status === 'paid') {
                 clearInterval(statusInterval); 
 
                 document.getElementById('payment-qr').classList.add('hidden');
-                document.getElementById('payment-success').classList.remove('hidden');
+s               document.getElementById('payment-success').classList.remove('hidden');
 
                 // O 'Purchase' FOI REMOVIDO DAQUI
                 // O backend (server.js) vai cuidar disso 100%
-s                 
+                
                 document.getElementById('access-button').href = linkDeDestino;
             }
         } catch (err) { 
@@ -504,7 +525,7 @@ s                 
 } catch (error) {
     console.error('Erro:', error);
     alert('Ocorreu um erro ao gerar o PIX. Tente novamente.');
-  t   botao.disabled = false;
+    botao.disabled = false;
     botao.innerHTML = 'Entrar no Grupo';
 }
 
